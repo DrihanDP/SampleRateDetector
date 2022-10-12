@@ -8,9 +8,11 @@ f = open(file, 'r')
 line = f.readline()
 
 if file.endswith(".asc"):
-    file_type = "asc"
+    time = 1
+    position = 0
 elif file.endswith(".trc"):
-    file_type = "trc"
+    time = 100
+    position = 1
 
 first_bit = []
 first_bit_count = 0
@@ -20,8 +22,8 @@ while line:
     if "Rx" not in splitLine:
         line = f.readline()
     elif first_bit_count == 101:
-        print(line[1:11])
-        if line[3:4] == "1":
+        print(splitLine[position])
+        if 0.999 < float(splitLine[position]) < 1.001:
             print("Sample rate is 100Hz")
         elif line[3:4] == "2":
             print("Sample rate is 50Hz")
