@@ -34,20 +34,20 @@ while line:
                 if first_id == '':
                     first_id = splitLine[id_position]
                     line = f.readline()
-                elif first_bit_count == 101:
-                    if lower_bound < float(splitLine[position]) < upper_bound:
+                elif lower_bound < float(splitLine[position]) < upper_bound:
+                    if first_bit_count == 101:
                         print("Sample rate is 100Hz")
-                    elif line[3:4] == "2":
+                    elif first_bit_count == 51:
                         print("Sample rate is 50Hz")
-                    elif line[3:4] == "3" or line[3:4] == "4":
+                    elif first_bit_count == 26:
                         print("Smaple rate is 25Hz")
-                    elif line[3:4] == "5":
+                    elif first_bit_count == 21:
                         print("Sample rate is 20Hz")
-                    elif line[2:4] == "10":
+                    elif first_bit_count == 11:
                         print("Sample rate is 10Hz")
-                    elif line[2:4] == "19" or line[2:4] == "20":
+                    elif first_bit_count == 6:
                         print("Sample rate is 5Hz")
-                    elif line[2:4] == "99" or line[1:4] == "100":
+                    elif first_bit_count == 2:
                         print("Sample rate is 1Hz")
                     else:
                         print("Unknown sample rate")
