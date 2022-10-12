@@ -1,16 +1,25 @@
+file_type = ''
+
+print("Please input a directory")
 file = input(">")
+
 
 f = open(file, 'r')
 line = f.readline()
 
-_301count = 0
-bit_ID = []
+if file.endswith(".asc"):
+    file_type = "asc"
+elif file.endswith(".trc"):
+    file_type = "trc"
+
 first_bit = []
+first_bit_count = 0
 
 while line:
-    if "Rx" not in line:
+    splitLine = [x for x in line.split(" ") if x != ""]
+    if "Rx" not in splitLine:
         line = f.readline()
-    elif _301count == 101:
+    elif first_bit_count == 101:
         print(line[1:11])
         if line[3:4] == "1":
             print("Sample rate is 100Hz")
@@ -32,8 +41,8 @@ while line:
     else:
         if "Rx" in line:
             if "301" in line[13:20]:
-                _301count += 1
-                if _301count == 0:
+                first_bit_count += 1
+                if first_bit_count == 0:
                     first_301_time = line[3:11]
                     line = f.readline()
                 else:
