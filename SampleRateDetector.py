@@ -17,8 +17,8 @@ elif file.endswith(".trc"):
     time = 100
     position = 1
     id_position = 3
-    lower_bound = 999.9
-    upper_bound = 1000.1
+    lower_bound = 999.8
+    upper_bound = 1000.2
 
 first_id = ''
 first_bit_count = 0
